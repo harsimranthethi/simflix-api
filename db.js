@@ -42,7 +42,6 @@ async function listMovies(pageNumber, sortOrder, sortDirection, searchStr) {
     var rx = new RegExp(searchStr,"i") 
     var query = {"title":rx}
 
-    console.log(query)
     const cursor = movies.find(query, options).limit(limit).skip(skip);
     var outMovies = []
     await cursor.forEach((d,i)=>{
