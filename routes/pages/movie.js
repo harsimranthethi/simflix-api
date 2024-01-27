@@ -12,11 +12,14 @@ router.get("/list", async function(req,res,next){
     var page = 1
     var sort = "alpha"
     var direction
+    var searchStr = ""
     if (req.query.page != undefined) page = req.query.page;
     if (req.query.sort != undefined) sort = req.query.sort;
     if (req.query.direction != undefined) direction = req.query.direction;
+    if (req.query.searchStr != undefined) searchStr = req.query.searchStr;
 
-    res.send(await mdb.listMovies(page, sort,direction))
+    res.send(await mdb.listMovies(page, sort,direction, searchStr)) 
+    //It then sends the response by calling the listMovies function from the mdb module and awaits its result.
 })
 
 //movie/create
